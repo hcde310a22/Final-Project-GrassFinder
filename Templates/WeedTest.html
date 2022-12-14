@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Grass Finder Form</title>
+      <style>
+        body {
+            background-color: rgb(102, 204, 102);
+            font-family: -apple-system, Avenir, sans-serif;
+            font-size: 1em;
+            line-height: 1.2;
+            text-align: left;
+            padding: 15px;
+        }
+        .formtitle {
+            color: rgb(102, 204, 102);
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin: 15px 0;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"] {
+            padding: 8px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .strain-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+            padding: 15px;
+            margin: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: rgb(250, 250, 250)
+        }
+        .strain-card h3 {
+            margin: 0;
+            margin-bottom: 5px;
+        }
+        .strain-card p {
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        .strain-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .strain-card.sativa {
+            border: 3px solid red;
+        }
+
+        .strain-card.indica {
+          border: 3px solid blue;
+        }
+
+        .strain-card.hybrid {
+          border: 3px solid purple;
+        }
+
+      </style>
+   </head>
+   <body>
+      <h1>Grass Finder</h1>
+      <em>Can't decide on what product to buy? Fill out this form to get a cannabis strain suggestion!</em><br /><br />
+      <form action="/" method="get">
+        <div class="form-group">
+          <label for="name">Please enter your name: </label>
+          <input type="text" id="name" name="name" />
+        </div>
+        <div class="form-group">
+          <label for="feeling">Please type a couple sentences about how your day has been: </label>
+          <input type="text" id="feeling" name="feeling" />
+        </div>
+        <input type="submit" value="Get my recommendations!" name="gobtn" />
+      </form>
+      {% if prompt %}
+      <div class='formtitle'>{{prompt}}</div>
+      {% elif personname  %}
+      <h2>{{page_title}}</h2>
+        <h3>Based on how your day went, your most prevalent emotion is: {{actualfeeling}}</h3>
+        <p>Here are some strain recommendations! Strains with higher ratings (out of 5) generally will help consumers feel the best desired effects.</p>
+        <div class="strain-card-container">
+            <div class="strain-card sativa">
+                <h3>Sativa</h3>
+                   <p>Strain: {{sativastrainchoice}}</p>
+                   <p>Score: {{sativastrainscore}}</p>
+                   <p>Caption: {{sativastraincaption}}</p>
+            </div>
+            <div class="strain-card indica">
+                <h3>Indica</h3>
+                    <p>Strain: {{indicastrainchoice}}</p>
+                    <p>Score: {{indicastrainscore}}</p>
+                    <p>Caption: {{indicastraincaption}}</p>
+            </div>
+            <div class="strain-card hybrid">
+                <h3>Hybrid</h3>
+                   <p>Strain: {{hybridstrainchoice}}</p>
+                   <p>Score: {{hybridstrainscore}}</p>
+                   <p>Caption: {{hybridstraincaption}}</p>
+            </div>
+        </div>
+      {% endif %}
+   </body>
+</html>
