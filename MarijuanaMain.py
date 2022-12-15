@@ -10,7 +10,7 @@ def get_emotion(sentence = ""):
     url = "https://api.apilayer.com/text_to_emotion"
     payload = sentence.encode("utf-8")
     headers = {
-        "apikey": "rSFAbhy5T4qUQetMNh4Xx6ZRve6ZvrQB"
+        "apikey": "PVWq14zMbVbmwon3DsDjFWDxQRAs3i5a"
     }
     response = requests.request("POST", url, headers=headers, data=payload)
 
